@@ -106,13 +106,10 @@ def correct_jpop(values):
 
 
 def to_dict(manga_id, volume, values):
-    release_date = datetime.strptime(values['release_date'], '%d/%m/%Y') if values['release_date'] else datetime.now()
-    release_date = release_date.strftime('%Y-%m-%d')
-    price = values['price'] if values['price'] else '0'
     return {'manga_id': manga_id,
             'subtitle': values['subtitle'],
             'volume': volume,
             'publisher': values['publisher'],
-            'release_date': release_date,
-            'price': price,
+            'release_date': values['release_date'] if values['release_date'] else datetime.now().strftime('%Y-%m-%d'),
+            'price': values['price'] if values['price'] else '0',
             'cover': values['cover']}
