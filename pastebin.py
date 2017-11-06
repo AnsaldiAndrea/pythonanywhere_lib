@@ -446,7 +446,7 @@ class PastebinAPI(object):
         argv = {'api_dev_key': str(api_dev_key)}
 
         # Valid API option - 'trends' is returns trending pastes
-        argv['api_option']=str('trends')
+        argv['api_option'] = str('trends')
         # lets try to read the URL that we've just built.
         request_string = urllib.request.urlopen(self._api_url, urllib.parse.urlencode(argv).encode('utf-8'))
         response = request_string.read()
@@ -461,7 +461,7 @@ class PastebinAPI(object):
 
         return response
 
-    def pastes_by_user(self, api_dev_key, api_user_key, results_limit=None):
+    def pastes_by_user(self, api_dev_key, api_user_key, results_limit=None) -> bytes:
         """Returns all pastes for the provided api_user_key.
 
 
@@ -537,7 +537,7 @@ class PastebinAPI(object):
 
         return response
 
-    def generate_user_key(self, api_dev_key, username, password):
+    def generate_user_key(self, api_dev_key, username, password) -> bytes:
         """Generate a user session key - needed for other functions.
 
 
@@ -695,7 +695,7 @@ class PastebinAPI(object):
 
         return response
 
-    def raw(self, api_dev_key, api_user_key, api_paste_key):
+    def raw(self, api_dev_key, api_user_key, api_paste_key) -> bytes:
         """Return raw text of a paste
 
 
@@ -721,7 +721,7 @@ class PastebinAPI(object):
         @type   api_paste_key: string
         @param  api_paste_key: The key of a paste
 
-        @rtype: string
+        @rtype: bytearray
         @returns: Raw text of the paste.
 
         """
