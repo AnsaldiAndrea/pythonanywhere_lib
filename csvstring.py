@@ -26,9 +26,18 @@ def csv_to_values(csv_file_name):
 
 
 def csvstring_to_values(csvstring):
-    """covert a string in csv format to an object"""
+    """covert a string in csv format to a list of objects"""
     with StringIO(csvstring) as input:
         return from_input(input)
+
+
+def csvstring_to_value(csvstring):
+    """convert file in csv format to an object"""
+    data = csvstring_to_values(csvstring)
+    if data:
+        return data[0]
+    else:
+        return data
 
 
 def from_input(input):
