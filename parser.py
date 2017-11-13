@@ -34,7 +34,7 @@ class Parser:
         for x in correct_jpop(to_correct):
             release.insert(self.db, x)
 
-    def close(self):
+    def __exit__(self, exc_type, exc_val, exc_tb):
         self.db.close()
 
 
