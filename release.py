@@ -49,8 +49,7 @@ def update_manga(db, values):
 
 def unknown(db, values):
     # title_volume,publisher,release_date,price,cover
-    release_date = datetime.strptime(values['release_date'], '%d/%m/%Y') if values['release_date'] else datetime.now()
-    values['release_date'] = release_date.strftime('%Y-%m-%d')
+    values['release_date'] = values['release_date'] if values['release_date'] else datetime.now().strftime('%Y-%m-%d')
     ex = ('INSERT INTO unknown (title,subtitle,publisher,release_date,price,cover) '
           'VALUES("{title_volume}","{subtitle}","{publisher}",\'{release_date}\',{price},"{cover}")').format_map(values)
     update(db, ex)

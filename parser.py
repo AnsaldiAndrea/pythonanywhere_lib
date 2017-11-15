@@ -18,6 +18,9 @@ class Parser:
             title_dict[x[1]] = x[0]
         self.title_dict = title_dict
 
+    def __enter__(self):
+        return self
+
     def parseall(self, values):
         to_correct = []
         for x in values:
@@ -35,6 +38,7 @@ class Parser:
             release.insert(self.db, x)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        print("exit")
         self.db.close()
 
 
