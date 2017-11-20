@@ -59,6 +59,8 @@ def regex_planet(db, values, title_dict):
             release.insert(db, to_dict(title_dict[lower], 1, values))
         else:
             release.unknown(db, values)
+    else:
+        release.unknown(db, values)
 
 
 def regex_star(db, values, title_dict):
@@ -78,6 +80,8 @@ def regex_star(db, values, title_dict):
             release.insert(db, to_dict(title_dict[lower], 1, values))
         else:
             release.unknown(db, values)
+    else:
+        release.unknown(db, values)
 
 
 def regex_jpop(db, values, title_dict, to_correct):
@@ -97,6 +101,8 @@ def regex_jpop(db, values, title_dict, to_correct):
             to_correct.append(to_dict(title_dict[lower], 1, values))
         else:
             release.unknown(db, values)
+    else:
+        release.unknown(db, values)
 
 
 def correct_jpop(values):
