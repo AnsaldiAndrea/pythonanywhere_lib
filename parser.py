@@ -9,7 +9,8 @@ class Parser:
         self.db = mysql.connect(
             host='Raistrike.mysql.pythonanywhere-services.com',
             user="Raistrike",
-            passwd="Nuvoletta2", db="Raistrike$data")
+            passwd="Nuvoletta2", db="Raistrike$data",
+            charset='utf8', use_unicode=True)
         cur = self.db.cursor()
         cur.execute('SELECT id,title FROM manga')
         title_dict = {re.sub('[^\w]', '', x[1]).lower(): x[0] for x in cur.fetchall()}

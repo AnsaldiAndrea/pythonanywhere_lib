@@ -49,6 +49,7 @@ def update_manga(db, values):
 
 def unknown(db, values):
     # title_volume,publisher,release_date,price,cover
+    print(values['title_volume'])
     values['release_date'] = values['release_date'] if values['release_date'] else datetime.now().strftime('%Y-%m-%d')
     ex = ('INSERT INTO unknown (title,subtitle,publisher,release_date,price,cover) '
           'VALUES("{title_volume}","{subtitle}","{publisher}",\'{release_date}\',{price},"{cover}")').format_map(values)
@@ -59,7 +60,8 @@ def update(db, statement, otherwise=None):
     try:
         db.cursor().execute(statement)
         db.commit()
-    except Exception:
+    except Exception as e:
+        print(e)
         db.rollback()
         if otherwise:
             update(db, otherwise)
